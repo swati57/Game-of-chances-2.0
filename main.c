@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include"inputDet.h"
+#include"game.h"
 
 int main() {
     int menu_choice = 0, player_count;
@@ -25,9 +26,12 @@ int main() {
 
                     //Declaration of an array of struct with `player_count` number of players
                     Player players[player_count];
+                    Player rankwise[player_count];
 
                     //Calling inputDet() function to input data of players
-                    inputDet(players, player_count);   
+                    inputDet(players, player_count);
+
+                    game(players, rankwise, player_count);
                     
                     break;
                 }
