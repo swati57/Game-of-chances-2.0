@@ -1,5 +1,5 @@
 ### Game of Chances
-
+some modification by shruti
 #### This is a group project build using C
 
 Concepts used:
