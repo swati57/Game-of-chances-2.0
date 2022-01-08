@@ -1,5 +1,3 @@
- neha 78
- priya 34
- ekka 233
- lol 54
- ho 44
+neha 89
+priya 34
+ekka 20
