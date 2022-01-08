@@ -3,6 +3,7 @@
 
 #include<stdlib.h>
 #include"inputDet.h"
+#include"fetchQues.h"
 
 void generateId(int*);
 

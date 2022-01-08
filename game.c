@@ -2,7 +2,7 @@
 #include"game.h"
 #include<stdlib.h>
 #include<time.h>
-#define NOQ 30  //No. of questions available
+#define NOQ 20  //No. of questions available
 
 void generateId(int *quesIds) {
     int id = 0, i = 0, j, found;
@@ -37,14 +37,30 @@ void game(Player *players, Player *Rankwise, int pcount) {
 
     //Generates 5 different question Ids for 5 rounds
     generateId(quesIds);
-    for (int i = 0 ; i <5 ; i++){
-        printf("%d  ", quesIds[i]);
+    printf("\n");
+    for(int t = 0 ; t<5 ; t++) {
+        printf("-%d-", quesIds[t]);
     }
+    printf("\n");
 
-    // while(round <= 5) {
-    //     printf("\n----ROUND %d----", round);
+    while(round <= 5) {
+        printf("\n----ROUND %d----", round);
 
-    // }
-    return;
+        //Fetch question
+        FILE *fptr;
+        fptr = fopen("Questions.txt", "r");
         
+        if(fptr == NULL){
+            printf("Questions.txt file failed to open\n");
+        }
+        else {
+
+            printf("\n*Question* ~\n");
+            int ans = fetchQues(quesIds[round-1]);
+            printf("\n%d\n", ans);
+
+            round++;    //Increment to next round
+        }
+    }
+    return;    
 }

@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include<stdlib.h>
+#include"fetchQues.h"
 
 int fetchQues(int id) {
     char buffer[100] = "", line_text[100] = "", ansStr[3] = "";
@@ -38,27 +38,4 @@ int fetchQues(int id) {
         ansStr[j++] = line_text[i++];
     }
     return atoi(ansStr);
-}
-
-void main() {
-    printf("\n%d\n", fetchQues(1));
-    printf("\n%d\n", fetchQues(2));
-    printf("\n%d\n", fetchQues(3));
-    printf("\n%d\n", fetchQues(4));
-    printf("\n%d\n", fetchQues(5));
-    printf("\n%d\n", fetchQues(6));
-    printf("\n%d\n", fetchQues(7));
-    printf("\n%d\n", fetchQues(8));
-    printf("\n%d\n", fetchQues(9));
-    printf("\n%d\n", fetchQues(10));
-    printf("\n%d\n", fetchQues(11));
-    printf("\n%d\n", fetchQues(12));
-    printf("\n%d\n", fetchQues(13));
-    printf("\n%d\n", fetchQues(14));
-    printf("\n%d\n", fetchQues(15));
-    printf("\n%d\n", fetchQues(16));
-    printf("\n%d\n", fetchQues(17));
-    printf("\n%d\n", fetchQues(18));
-    printf("\n%d\n", fetchQues(19));
-    printf("\n%d\n", fetchQues(20));
 }
