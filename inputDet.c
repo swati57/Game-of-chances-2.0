@@ -1,3 +1,5 @@
+//Done
+
 #include<stdio.h>
 #include"inputDet.h"
 #include<string.h>

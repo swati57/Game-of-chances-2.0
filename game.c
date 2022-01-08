@@ -34,9 +34,11 @@ void generateId(int *quesIds) {
 void game(Player *players, Player *Rankwise, int pcount) {
     int round  = 1;
     int quesIds[5] = {0};
+    int playerGuess[pcount];
 
     //Generates 5 different question Ids for 5 rounds
     generateId(quesIds);
+
     printf("\n");
     for(int t = 0 ; t<5 ; t++) {
         printf("-%d-", quesIds[t]);
@@ -56,8 +58,30 @@ void game(Player *players, Player *Rankwise, int pcount) {
         else {
 
             printf("\n*Question* ~\n");
+            //Displays Question
             int ans = fetchQues(quesIds[round-1]);
-            printf("\n%d\n", ans);
+            // printf("\n%d\n", ans);
+
+            //To store player guessed in each round
+            printf("Enter your guesses...\n");
+            for(int p = 0 ; p < pcount ; p++) {
+                if(players[p].eStatus == 0){
+                    printf("Player %d- %s: ", p+1, players[p].name);
+                    scanf("%d", &playerGuess[p]);
+                }
+            }
+
+            int e = evaluate(players, playerGuess, round, ans, pcount);
+            
+
+            for(int t = 0 ; t < pcount ; t++) {
+                printf("~%d~", playerGuess[t]);
+                printf("\n%s", players[t].name);
+                printf("\n%d", players[t].eStatus);
+                printf("\n%f\n", players[t].netScore);
+            }
+
+            
 
             round++;    //Increment to next round
         }

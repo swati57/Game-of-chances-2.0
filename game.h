@@ -4,6 +4,7 @@
 #include<stdlib.h>
 #include"inputDet.h"
 #include"fetchQues.h"
+#include"evaluate.h"
 
 void generateId(int*);
 

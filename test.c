@@ -2,7 +2,7 @@
 #include<stdlib.h>
 
 int fetchQues(int id) {
-    char buffer[100] = "", line_text[100] = "", ansStr[3] = "";
+    char buffer[200] = "", line_text[200] = "", ansStr[3] = "";
     int lineCount = 1;
 
     FILE *fptr;
