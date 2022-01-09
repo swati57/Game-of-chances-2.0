@@ -8,6 +8,6 @@
 
 void generateId(int*);
 
-void game(Player*, Player*, int);
+void game(Player*, int*, int);
 
 #endif

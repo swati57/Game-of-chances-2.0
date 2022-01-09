@@ -25,8 +25,9 @@ void selectRange(int round, int ans, int *limits) {
             range = 5;
     }
 
+    //Calculating lowerlimit and upperlimit of the answer in the following round 
     //index 0 stores lowerlimit, index 1 - upperlimit
-    limits[0] = ((ans - range) <= 0)? (ans - range) : 0;
+    limits[0] = ((ans - range) <= 0)? 0 : (ans - range);
     limits[1] = ((ans + range) >= 100)? 100 : (ans + range);
 
     return;
@@ -37,21 +38,24 @@ int evaluate(
     int *playerGuess, 
     int round, 
     int ans, 
-    int pcount) {
+    int pcount,
+    int *elPlayers) {
 
     int score, elcount = 0;
     int limits[2];
     selectRange(round, ans, limits);
 
+    //evaluating score and updating estatus for each player in this round
     for(int i = 0 ; i < pcount ; i++) {
+
         if(players[i].eStatus == 0) {
-            if(playerGuess[i] < limits[0]  && playerGuess[i] > limits[1]) {
+            if(playerGuess[i] < limits[0] && playerGuess[i] > limits[1]) {
+
                 players[i].eStatus = 1;
-                ++elcount;
             }
-            score = 100-(0.5 * abs(ans - playerGuess[i]));
+            score = 100 - (0.5 * abs(ans - playerGuess[i]));
             players[i].netScore += score;
-        }  
+        }
     }
 
     return elcount;

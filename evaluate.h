@@ -5,6 +5,6 @@
 #include"inputDet.h"
 
 void selectRange(int, int, int*);
-int evaluate(Player*, int*, int, int, int);
+int evaluate(Player*, int*, int, int, int, int*);
 
 #endif

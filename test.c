@@ -41,24 +41,24 @@ int fetchQues(int id) {
 }
 
 void main() {
-    printf("\n%d\n", fetchQues(1));
-    printf("\n%d\n", fetchQues(2));
-    printf("\n%d\n", fetchQues(3));
-    printf("\n%d\n", fetchQues(4));
-    printf("\n%d\n", fetchQues(5));
-    printf("\n%d\n", fetchQues(6));
-    printf("\n%d\n", fetchQues(7));
-    printf("\n%d\n", fetchQues(8));
-    printf("\n%d\n", fetchQues(9));
-    printf("\n%d\n", fetchQues(10));
-    printf("\n%d\n", fetchQues(11));
-    printf("\n%d\n", fetchQues(12));
-    printf("\n%d\n", fetchQues(13));
-    printf("\n%d\n", fetchQues(14));
-    printf("\n%d\n", fetchQues(15));
-    printf("\n%d\n", fetchQues(16));
-    printf("\n%d\n", fetchQues(17));
-    printf("\n%d\n", fetchQues(18));
-    printf("\n%d\n", fetchQues(19));
-    printf("\n%d\n", fetchQues(20));
+    printf("\n1... %d\n", fetchQues(1));
+    printf("\n2... %d\n", fetchQues(2));
+    printf("\n3... %d\n", fetchQues(3));
+    printf("\n4... %d\n", fetchQues(4));
+    printf("\n5... %d\n", fetchQues(5));
+    printf("\n6... %d\n", fetchQues(6));
+    printf("\n7... %d\n", fetchQues(7));
+    printf("\n8... %d\n", fetchQues(8));
+    printf("\n9... %d\n", fetchQues(9));
+    printf("\n10.. %d\n", fetchQues(10));
+    printf("\n11... %d\n", fetchQues(11));
+    printf("\n12... %d\n", fetchQues(12));
+    printf("\n13... %d\n", fetchQues(13));
+    printf("\n14... %d\n", fetchQues(14));
+    printf("\n15... %d\n", fetchQues(15));
+    printf("\n16... %d\n", fetchQues(16));
+    printf("\n17... %d\n", fetchQues(17));
+    printf("\n18... %d\n", fetchQues(18));
+    printf("\n19... %d\n", fetchQues(19));
+    printf("\n20... %d\n", fetchQues(20));
 }
