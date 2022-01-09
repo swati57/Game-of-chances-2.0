@@ -31,7 +31,7 @@ void generateId(int *quesIds) {
 }
 
 
-void game(Player *players, int *rankwise, int pcount) {
+void game(Player *players, int pcount) {
     int round  = 1;
     int quesIds[5] = {0};
     int playerGuess[pcount];
@@ -80,16 +80,16 @@ void game(Player *players, int *rankwise, int pcount) {
             int eliminatedIds[pcount];
             //Score calculation and updating elimination status of each player in this round
             //returns number of player who guessed out of range
-            int elcount = evaluate(players, playerGuess, round, ans, pcount, eliminatedIds;
+            int elcount = evaluate(players, playerGuess, round, ans, pcount, eliminatedIds);
 
             //If more than one player is out of range in this round 
             //then the player with lesser score will be eliminated
-            //if(elcount > 1) eliminateOne(players, eliminatedIds);
+            if(elcount > 1) 
+                eliminateOne(players, eliminatedIds, elcount);
 
 
 
-            
-            printf("\nThe correct answer is : %d%\n", ans);
+            printf("\nThe correct answer is : %d%%\n", ans);
 
             //To display player details after each round
             for(int t = 0 ; t < pcount ; t++) {

@@ -39,7 +39,7 @@ int evaluate(
     int round, 
     int ans, 
     int pcount,
-    int *elPlayers) {
+    int *elIds) {
 
     int score, elcount = 0;
     int limits[2];
@@ -50,7 +50,7 @@ int evaluate(
 
         if(players[i].eStatus == 0) {
             if(playerGuess[i] < limits[0] && playerGuess[i] > limits[1]) {
-
+                elIds[elcount++] = i;
                 players[i].eStatus = 1;
             }
             score = 100 - (0.5 * abs(ans - playerGuess[i]));

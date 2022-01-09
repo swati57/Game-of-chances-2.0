@@ -1,9 +1,8 @@
 #ifndef EONE
 #define EONE
 
-#include<stdlib.h>
 #include"inputDet.h"
 
-void eliminateOne(Player*, int*);
+void eliminateOne(Player*, int*, int);
 
 #endif

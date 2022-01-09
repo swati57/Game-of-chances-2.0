@@ -5,9 +5,10 @@
 #include"inputDet.h"
 #include"fetchQues.h"
 #include"evaluate.h"
+#include"eliminateOne.h"
 
 void generateId(int*);
 
-void game(Player*, int*, int);
+void game(Player*, int);
 
 #endif
