@@ -1,5 +1,7 @@
 #include<stdio.h>
-
+#include"inputDet.h"
+#include"game.h"
+#include"LeaderBoard.h"
 int main() {
     int menu_choice = 0, player_count;
 
@@ -15,20 +17,28 @@ int main() {
 
         switch (menu_choice) {
             case 1:
-                //Game start 
-                printf("\nGame Starts\n");
-                
-                printf("\nEnter the number of players: ");
-                scanf("%d", &player_count);
+                {
+                    //Game Entry 
+                    printf("\nGame Starts\n");
+                    
+                    printf("\nEnter the number of players: ");
+                    scanf("%d", &player_count);
 
-                //playerDet(player_count);   //calls player_det function
-                
-                break;
+                    //Declaration of an array of struct with `player_count` number of players
+                    Player players[player_count];
+
+                    //Calling inputDet() function to input data of players
+                    inputDet(players, player_count);
+
+                    game(players, player_count);
+                    
+                    break;
+                }
             
             case 2:
                 //Display leaderboard
                 printf("\nDisplay leaderboard\n");
-                //Leaderboard();    //calls the function to display leaderboard
+                display();    //calls the function to display leaderboard
                 break;
 
             case 3:
@@ -39,10 +49,8 @@ int main() {
             default:
                 //Choice out of bound
                 printf("\nWrong choice. Please try again :)\n");
-                break;
         }
-
     }
     
-return 0;
+    return 0;
 }
