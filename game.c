@@ -2,6 +2,8 @@
 #include"game.h"
 #include<stdlib.h>
 #include<time.h>
+#include"LeaderBoard.h"
+
 #define NOQ 20  //No. of questions available
 
 void generateId(int *quesIds) {
@@ -84,6 +86,7 @@ void game(Player *players, int pcount) {
 
             //If more than one player is out of range in this round 
             //then the player with lesser score will be eliminated
+
             if(elcount > 1) 
                 eliminateOne(players, eliminatedIds, elcount);
 
@@ -106,7 +109,15 @@ void game(Player *players, int pcount) {
             }
 
             round++;    //Increment to next round
+
+
+            sortCurrent(players,pcount,1); //to display current leaderboard
+        }
+
+    }
+    LeaderB(players);
         }
     }
+
     return;    
 }

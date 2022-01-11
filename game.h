@@ -6,6 +6,7 @@
 #include"fetchQues.h"
 #include"evaluate.h"
 #include"eliminateOne.h"
+#include"LeaderBoard.h"
 
 void generateId(int*);
 

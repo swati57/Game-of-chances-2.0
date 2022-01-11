@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include"inputDet.h"
 #include"game.h"
+#include"LeaderBoard.h"
 
 int main() {
     int menu_choice = 0, player_count;
@@ -38,7 +39,7 @@ int main() {
             case 2:
                 //Display leaderboard
                 printf("\nDisplay leaderboard\n");
-                //Leaderboard();    //calls the function to display leaderboard
+                display();    //calls the function to display leaderboard
                 break;
 
             case 3:
