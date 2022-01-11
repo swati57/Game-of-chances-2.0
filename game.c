@@ -116,8 +116,6 @@ void game(Player *players, int pcount) {
 
     }
     LeaderB(players);
-        }
-    }
 
     return;    
 }
