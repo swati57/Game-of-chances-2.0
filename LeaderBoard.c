@@ -82,7 +82,7 @@ void sortCurrent(Player *a, int size, int rank){
 
     if(rank==1){
         printf("Current Scores are:  \n");
-        for(i=0; i<5; i++){
+        for(i=0; i<size; i++){
             printf("%d. %s        %lf \n",i+1,a[i].name,a[i].netScore);
         }
 
