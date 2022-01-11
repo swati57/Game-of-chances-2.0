@@ -2,6 +2,7 @@
 #include"inputDet.h"
 #include"game.h"
 #include"LeaderBoard.h"
+
 int main() {
     int menu_choice = 0, player_count;
 
