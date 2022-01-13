@@ -2,6 +2,7 @@
 #include"game.h"
 #include<stdlib.h>
 #include<time.h>
+#include<string.h>
 #include"LeaderBoard.h"
 
 #define NOQ 20  //No. of questions available
@@ -62,18 +63,27 @@ void game(Player *players, int pcount) {
             printf("\n~ *Question* ~\n");
             //Displays Question and returns answer to that question
             int ans = fetchQues(quesIds[round-1]);
-
+            float guess_num;
             //To store player guessed in each round
             printf("\nEnter your guess... range is 0 to 100\n");
             for(int p = 0 ; p < pcount ; p++) {
                 if(players[p].eStatus == 0) {   
                     //Input player guess
                     printf("Player %d- %s: ", p+1, players[p].name);
-                    scanf("%d", &playerGuess[p]);
-                    //to check whether guess is between 0 to 100
-                    if(playerGuess[p] < 0 || playerGuess[p] > 100 ) {
-                        printf("\nError!! Guess is out of range ... try again\n ");
+
+                    scanf("%f", &guess_num);
+                    if((int)guess_num!=guess_num)
+                    {
+                        printf("\nError!! Enter integers only ... try again\n ");
                         --p;
+                    }
+                    else{
+                        playerGuess[p]=guess_num;
+                        //to check whether guess is between 0 to 100
+                        if(playerGuess[p] < 0 || playerGuess[p] > 100 ) {
+                            printf("\nError!! Guess is out of range ... try again\n ");
+                            --p;
+                        }
                     }
                 }
             }
@@ -95,17 +105,14 @@ void game(Player *players, int pcount) {
             printf("\nThe correct answer is : %d%%\n", ans);
 
             //To display player details after each round
+            printf("\n\t---Player details---\n");
+            printf("PLAYER\t\t\tELIMINATION STATUS\t\tNET SCORE\n");
             for(int t = 0 ; t < pcount ; t++) {
-
-                printf("\n\t---Player %d---",t+1);
-                printf("\n%s", players[t].name);
-                if(players[t].eStatus == 1) 
-                    printf("\nStatus: ELIMINATED");
-                else 
-                    printf("\nStatus: IN GAME");
-
-                printf("\n%f\n", players[t].netScore);
-
+                char eStatus[10]="IN GAME";
+                if(players[t].eStatus == 1)
+                    strcpy(eStatus,"ELIMINATED");
+                
+                printf("\n%-15s\t\t %-15s\t\t  %-15.2f\n", players[t].name,eStatus,players[t].netScore);
             }
 
             round++;    //Increment to next round
