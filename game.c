@@ -104,25 +104,26 @@ void game(Player *players, int pcount) {
 
             printf("\nThe correct answer is : %d%%\n", ans);
 
+            sortCurrent(players,pcount); //to sort current ranking
             //To display player details after each round
             printf("\n\t---Player details---\n");
             printf("PLAYER\t\t\tELIMINATION STATUS\t\tNET SCORE\n");
             for(int t = 0 ; t < pcount ; t++) {
-                char eStatus[10]="IN GAME";
+                char eStatus[15]="IN GAME";
                 if(players[t].eStatus == 1)
                     strcpy(eStatus,"ELIMINATED");
                 
-                printf("\n%-15s\t\t %-15s\t\t  %-15.2f\n", players[t].name,eStatus,players[t].netScore);
+                printf("\n%d. %-15s\t\t %-15s\t\t  %-15.2f\n",t+1, players[t].name,eStatus,players[t].netScore);
             }
 
             round++;    //Increment to next round
 
 
-            sortCurrent(players,pcount,1); //to display current leaderboard
+            
         }
 
     }
-    LeaderB(players);
+    LeaderB(players,pcount);
 
     return;    
 }

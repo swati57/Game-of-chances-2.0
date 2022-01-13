@@ -7,7 +7,7 @@
     LeaderB function takes Current players info as argument.
     Display function displays the leaderboard from file.
 */
-void LeaderB(Player *player){
+void LeaderB(Player *player, int pcount){
     int i=0,j=0; 
 
         //first counting the number of players in file
@@ -20,7 +20,7 @@ void LeaderB(Player *player){
             }
         }
 
-        size= count+5; //space for 5 extra new players
+        size= count+pcount; //space for extra new players
         struct Player a[size]; //new structure var for new leaderboard
         
         rewind(fptr); //takes file pointer to the beginning of file
@@ -39,7 +39,7 @@ void LeaderB(Player *player){
         fclose(fptr);
 
         //adding present players to fresh leaderboard
-        for(i= count,j=0; j<5; i++, j++){
+        for(i= count,j=0; j<pcount; i++, j++){
             if(i==-1)i=0;
             strcpy(a[i].name,player[j].name);
             a[i].netScore= player[j].netScore;
@@ -47,7 +47,16 @@ void LeaderB(Player *player){
 
         //sorting...
 
-        sortCurrent(a,size,0);
+        struct Player  temp; 
+        for(i=0; i<size; i++){
+            for(j=0; j<size-i-1; j++){
+                if(a[j].netScore < a[j+1].netScore){
+                    temp= a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;   
+                }
+            }
+        }
         
     //writing the fresh leaderboard in file...
     fptr = fopen("testt.txt", "w"); //'w' mode to overwrite file
@@ -55,9 +64,9 @@ void LeaderB(Player *player){
     for(i=0; i<size-1; i++){
         fprintf(fptr,"%s            %lf\n",a[i].name,a[i].netScore);
     }
-    /*line 101 because above loop takes an extra line
+    /*line 69 because above loop takes an extra line
         and throws garbage value*/
-    fprintf(fptr,"%s %lf",a[size-1].name,a[size-1].netScore);
+    fprintf(fptr,"%s            %lf",a[size-1].name,a[size-1].netScore);
     fclose(fptr);
 
     //display fresh leaderboard in the end
@@ -66,28 +75,19 @@ void LeaderB(Player *player){
     
     //end of funtion :)
 }
-void sortCurrent(Player *a, int size, int rank){
+void sortCurrent(Player *players, int size){
     int i,j;
     struct Player  temp; 
     for(i=0; i<size; i++){
         for(j=0; j<size-i-1; j++){
-            if(a[j].netScore < a[j+1].netScore){
-                temp= a[j];
-                a[j] = a[j+1];
-                a[j+1] = temp;
+            if(players[j].netScore < players[j+1].netScore){
+                temp= players[j];
+                players[j] = players[j+1];
+                players[j+1] = temp;
                 
             }
         }
     }
-
-    if(rank==1){
-        printf("Current Scores are:  \n");
-        for(i=0; i<size; i++){
-            printf("%d. %s        %lf \n",i+1,a[i].name,a[i].netScore);
-        }
-
-    }
-
 }
 void display(){
     FILE *fptr;
@@ -95,14 +95,17 @@ void display(){
      if(fptr==NULL){
          printf("leaderboard file could not be opened :( \n");
      }
-     else{
-            printf("\n*******LEADERBOARD*********\n");
+     else{  
             char line_text[100],buffer[100];int i=1;
-            while(fgets(buffer, sizeof(buffer), fptr) != NULL) {
-                //storing the string in line_text from buffer
-                fscanf(fptr, "%[^\n]", line_text);
-                printf("%d. %s \n",i++,line_text);
-            }
+            if(fgets(buffer, sizeof(buffer), fptr) == NULL)
+            printf("\n LeaderBoard is empty :( \n enter 1 to start a game now!! \n");
+            else{
+                printf("\n*******LEADERBOARD*********\n");
+                rewind(fptr);
+                while(fgets(buffer, sizeof(buffer), fptr) != NULL) {
+                    printf("%d. %s \n",i++,buffer);
+                }
+            }  
         }  
     fclose(fptr);
 } 
