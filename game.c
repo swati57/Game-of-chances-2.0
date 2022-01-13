@@ -97,8 +97,8 @@ void game(Player *players, int pcount) {
             //If more than one player is out of range in this round 
             //then the player with lesser score will be eliminated
 
-            if(elcount > 1) 
-                eliminateOne(players, eliminatedIds, elcount);
+            // if(elcount > 1) 
+            //     eliminateOne(players, eliminatedIds, elcount);
 
 
 
