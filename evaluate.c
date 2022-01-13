@@ -41,7 +41,8 @@ int evaluate(
     int pcount,
     int *elIds) {
 
-    int score, elcount = 0;
+    int elcount = 0;
+    double score;
     int limits[2];
     selectRange(round, ans, limits);
 
@@ -53,7 +54,7 @@ int evaluate(
                 elIds[elcount++] = i;
                 players[i].eStatus = 1;
             }
-            score = 100 - (0.5 * abs(ans - playerGuess[i]));
+            score = 100 - (0.7 * abs(ans - playerGuess[i]));
             players[i].netScore += score;
         }
     }
