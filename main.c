@@ -25,12 +25,13 @@ int main() {
                     printf("\nEnter the number of players: ");
                     scanf("%d", &player_count);
 
-                    //Declaration of an array of struct with `player_count` number of players
+                    //Declaration of an array of struct of type Player with `player_count` number of players
                     Player players[player_count];
 
                     //Calling inputDet() function to input data of players
                     inputDet(players, player_count);
 
+                    //Calling function game.c
                     game(players, player_count);
                     
                     break;

@@ -44,17 +44,22 @@ int evaluate(
     int elcount = 0;
     double score;
     int limits[2];
+    
     selectRange(round, ans, limits);
 
     //evaluating score and updating estatus for each player in this round
     for(int i = 0 ; i < pcount ; i++) {
 
+        //checking whether the guess is within the range of accepted answer selected for the round
         if(players[i].eStatus == 0) {
             if(playerGuess[i] < limits[0] || playerGuess[i] > limits[1]) {
                 elIds[elcount++] = i;
                 players[i].eStatus = 1;
             }
+
+            //calculating score gained in this round by the player
             score = 100 - (0.7 * abs(ans - playerGuess[i]));
+            //added score to net score of the player
             players[i].netScore += score;
         }
     }

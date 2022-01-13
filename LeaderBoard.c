@@ -93,10 +93,11 @@ void display(){
     FILE *fptr;
      fptr= fopen("testt.txt","r");
      if(fptr==NULL){
-         printf("leaderboard file could not be opened :( \n");
+         printf("Leaderboard file could not be opened :( \n");
      }
      else{  
-            char line_text[100],buffer[100];int i=1;
+            char buffer[100];
+            int i = 1;
             if(fgets(buffer, sizeof(buffer), fptr) == NULL)
             printf("\n LeaderBoard is empty :( \n enter 1 to start a game now!! \n");
             else{

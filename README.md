@@ -27,4 +27,6 @@ $ gcc main.c fetchQues.c game.c LeaderBoard.c evaluate.c eliminateOne.c inputDet
 $ ./a.out
 ```
  
-
+decimal point 2 for storing
+string error handling
+game.c fptr modification

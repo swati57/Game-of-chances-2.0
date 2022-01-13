@@ -39,5 +39,7 @@ int fetchQues(int id) {
     while(line_text[i]) {
         ansStr[j++] = line_text[i++];
     }
+
+    //Changing the type of ansStr from string to integer returning it 
     return atoi(ansStr);
 }
