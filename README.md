@@ -18,18 +18,13 @@ Local setup:
 ```
 $ git clone https://github.com/SrijitaSarkar99/Game-of-chances-2.0.git
 ```
-4. To check your branch name
+4. To compile 
 ```
-$ git branch -r 
+$ gcc main.c fetchQues.c game.c LeaderBoard.c evaluate.c eliminateOne.c inputDet.c
 ```
-5. To switch to your branch
+5. To run 
 ```
-$ git checkout <your-branchname>
+$ ./a.out
 ```
-- Example: ``` $ git checkout Diwakar ```
-6. Add your files to the folder.
-7. ``` $ git add . ```
-8. ```$ git commit -m "<comment>"```
-9. ```$ git push -u origin <your-branchname>```
  
 

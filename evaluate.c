@@ -49,7 +49,7 @@ int evaluate(
     for(int i = 0 ; i < pcount ; i++) {
 
         if(players[i].eStatus == 0) {
-            if(playerGuess[i] < limits[0] && playerGuess[i] > limits[1]) {
+            if(playerGuess[i] < limits[0] || playerGuess[i] > limits[1]) {
                 elIds[elcount++] = i;
                 players[i].eStatus = 1;
             }
