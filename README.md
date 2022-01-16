@@ -31,17 +31,17 @@ It runs in CLI and gives you and your friends little competetive platform to tes
 
  - Create a folder and open it
  - For windows: Open git bash / For Linux: Open terminal and cd to that folder 
- - Clone the repository from link below 
+ - Clone the repository from link :  
 ```git clone https://github.com/SrijitaSarkar99/Game-of-chances-2.0.git```
-- Compile the files and turn them into an executable file called run 
+- Compile the files and turn them into an executable file called run : 
 ```gcc -o run main.c inputDet.c game.c fetchQues.c evaluate.c eliminateOne.c LeaderBoard.c```
 - Now, run the  executable file called run 
 ```./run```
 
 ### Guide to contribute :
-- Set original repo as your upstream remote
+- Set original repo as your upstream remote : 
 ```git remote add upstream https://github.com/SrijitaSarkar99/Game-of-chances-2.0.git```
-- Pull updates from upstream 
+- Pull updates from upstream : 
 ```git pull upstream```
 - Make changes locally and push it your forked copy of the project 
 - Create a pull request in GitHub
@@ -55,3 +55,10 @@ It runs in CLI and gives you and your friends little competetive platform to tes
  - The game ends when every player is eleminated and Leaderboard is shown.
  - On choosing "Leaderboard", data of past games is displayed. 
  - "Exit" option ends the game.
+
+**Original Contributors :**
+- Neha Priya Ekka : https://github.com/neha067
+- Srijita Sarkar : https://github.com/SrijitaSarkar99
+- Diwakar Arya : https://github.com/Diwakar38 
+- Swati Aggarwal : https://github.com/swati57 
+- Abhishek Udiya : https://github.com/abhishek0908
