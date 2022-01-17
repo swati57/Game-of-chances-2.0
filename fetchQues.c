@@ -8,7 +8,7 @@ int fetchQues(int id) {
     int lineCount = 1;
 
     FILE *fptr;
-    fptr = fopen("Questions.txt", "r");     //Open txt file in r mode
+    fptr = fopen("./textfiles/Questions.txt", "r");     //Open txt file in r mode
 
     if(fptr == NULL){
         //error

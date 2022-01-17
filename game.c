@@ -46,83 +46,70 @@ void game(Player *players, int pcount) {
     while(round <= 5) {
         printf("\n----ROUND %d----", round);
 
-        //Fetch question
-        FILE *fptr;
-        fptr = fopen("Questions.txt", "r");
+        printf("\n~ *Question* ~\n");
+        //Displays Question and returns answer to that question
+        int ans = fetchQues(quesIds[round-1]);
         
-        if(fptr == NULL){
-            printf("Error: Questions.txt file failed to open\n");
-        }
-        else {
+        float guess_num;
+        //To store player guessed in each round
+        printf("\nEnter your guess... range is 0 to 100\n");
+        for(int p = 0 ; p < pcount ; p++) {
+            if(players[p].eStatus == 0) {   
+                //Input player guess
+                printf("Player %d- %s: ", p+1, players[p].name);
 
-            printf("\n~ *Question* ~\n");
-            //Displays Question and returns answer to that question
-            int ans = fetchQues(quesIds[round-1]);
-            
-            float guess_num;
-            //To store player guessed in each round
-            printf("\nEnter your guess... range is 0 to 100\n");
-            for(int p = 0 ; p < pcount ; p++) {
-                if(players[p].eStatus == 0) {   
-                    //Input player guess
-                    printf("Player %d- %s: ", p+1, players[p].name);
+                scanf("%f", &guess_num);
 
-                    scanf("%f", &guess_num);
-
-                    //To check if the input is integer or not
-                    if((int)guess_num!=guess_num)
-                    {
-                        printf("\nError!! Enter integers only ... try again\n");
+                //To check if the input is integer or not
+                if((int)guess_num!=guess_num)
+                {
+                    printf("\nError!! Enter integers only ... try again\n");
+                    --p;
+                }
+                else{
+                    playerGuess[p]=guess_num;
+                    //to check whether guess is between 0 to 100
+                    if(playerGuess[p] < 0 || playerGuess[p] > 100 ) {
+                        printf("\nError!! Guess is out of range ... try again\n ");
                         --p;
-                    }
-                    else{
-                        playerGuess[p]=guess_num;
-                        //to check whether guess is between 0 to 100
-                        if(playerGuess[p] < 0 || playerGuess[p] > 100 ) {
-                            printf("\nError!! Guess is out of range ... try again\n ");
-                            --p;
-                        }
                     }
                 }
             }
-
-            //array to store the player Ids of players who guessed out of range 
-            int eliminatedIds[pcount];
-
-            //Score calculation and updating elimination status of each player in this round
-            //returns number of player who guessed out of range
-            int elcount = evaluate(players, playerGuess, round, ans, pcount, eliminatedIds);
-
-            //If more than one player is out of range in this round 
-            //then the player with lesser score will be eliminated
-
-            // if(elcount > 1) 
-            //     eliminateOne(players, eliminatedIds, elcount);
-
-
-
-            printf("\nThe correct answer is : %d%%\n", ans);
-
-            sortCurrent(players, pcount); //to sort current ranking
-
-
-            //To display player details after each round
-            printf("\n\t---Player details---\n");
-            printf("PLAYER\t\t\tELIMINATION STATUS\t\t\tNET SCORE\n");
-            for(int t = 0 ; t < pcount ; t++) {
-                if(players[t].eStatus == 1)
-                    strcpy(pStatus,"ELIMINATED");
-                else
-                    strcpy(pStatus, "IN GAME");
-                
-                printf("\n%d. %-15s\t\t %-15s\t\t  %-15.2f\n",t+1, players[t].name,pStatus,players[t].netScore);
-            }
-
-            round++;    //Increment to next round
-
-
-            
         }
+
+        //array to store the player Ids of players who guessed out of range 
+        int eliminatedIds[pcount];
+
+        //Score calculation and updating elimination status of each player in this round
+        //returns number of player who guessed out of range
+        int elcount = evaluate(players, playerGuess, round, ans, pcount, eliminatedIds);
+
+        //If more than one player is out of range in this round 
+        //then the player with lesser score will be eliminated
+
+        // if(elcount > 1) 
+        //     eliminateOne(players, eliminatedIds, elcount);
+
+
+
+        printf("\nThe correct answer is : %d%%\n", ans);
+
+        sortCurrent(players, pcount); //to sort current ranking
+
+
+        //To display player details after each round
+        printf("\n\t---Player details---\n");
+        printf("PLAYER\t\t\tELIMINATION STATUS\t\t\tNET SCORE\n");
+        for(int t = 0 ; t < pcount ; t++) {
+            if(players[t].eStatus == 1)
+                strcpy(pStatus,"ELIMINATED");
+            else
+                strcpy(pStatus, "IN GAME");
+            
+            printf("\n%d. %-15s\t\t %-15s\t\t  %-15.2f\n",t+1, players[t].name,pStatus,players[t].netScore);
+        }
+
+        round++;    //Increment to next round
 
     }
     LeaderB(players,pcount);

@@ -11,7 +11,7 @@ void LeaderB(Player *player, int pcount){
     int i=0,j=0; 
 
         //first counting the number of players in file
-        FILE *fptr = fopen("testt.txt", "r");
+        FILE *fptr = fopen("./textfiles/leaderboard.txt", "r");
 	    int count = 0, size =0;
 	    if ( fptr != NULL ){
             char line[256];
@@ -59,7 +59,7 @@ void LeaderB(Player *player, int pcount){
         }
         
     //writing the fresh leaderboard in file...
-    fptr = fopen("testt.txt", "w"); //'w' mode to overwrite file
+    fptr = fopen("./textfiles/leaderboard.txt", "w"); //'w' mode to overwrite file
 
     for(i=0; i<size-1; i++){
         fprintf(fptr,"%s            %lf\n",a[i].name,a[i].netScore);
@@ -91,7 +91,7 @@ void sortCurrent(Player *players, int size){
 }
 void display(){
     FILE *fptr;
-     fptr= fopen("testt.txt","r");
+     fptr= fopen("./textfiles/leaderboard.txt","r");
      if(fptr==NULL){
          printf("Leaderboard file could not be opened :( \n");
      }
