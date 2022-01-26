@@ -89,11 +89,7 @@ void game(Player *players, int pcount) {
         if(elcount > 1) {
             count+= eliminateOne(players, eliminatedIds, elcount); 
         }
-          
-          printf("\ncount:  %d",count);
-       
-
-
+        
         printf("\nThe correct answer is : %d%%\n", ans);
 
         sortCurrent(players, pcount); //to sort current ranking
