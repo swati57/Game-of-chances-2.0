@@ -64,6 +64,5 @@ int evaluate(
         }
 
     }
-    printf("elcount:   %d",elcount);
     return elcount;
 }

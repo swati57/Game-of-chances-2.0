@@ -5,7 +5,6 @@ int eliminateOne(Player* players, int* eliminatedIds, int elcount) {
     double minScore;
     //to find minimum score among the eliminated players
     minScore = players[eliminatedIds[0]].netScore; lowId=eliminatedIds[0];
-    printf("\n 1st   %f\n",minScore);
     i = 0;
     while (i < elcount)
     {
@@ -16,8 +15,6 @@ int eliminateOne(Player* players, int* eliminatedIds, int elcount) {
         }
         ++i;
     }
-    printf("min score:   %f",minScore);
-    printf("\nlow id:   %d",lowId);
     //if more than one eliminated player has same lowest score
     i = 0;
     while(i<elcount) {
@@ -26,7 +23,6 @@ int eliminateOne(Player* players, int* eliminatedIds, int elcount) {
         temp++;
         ++i;
     }
-    printf("\n counter check temp:  %d \n",temp);
     //if more than one player has same lowest score then no one will be eliminated in this round
     i = 0;
     if(temp > 1) {
