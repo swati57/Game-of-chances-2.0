@@ -1,1 +1,4 @@
 /build
+test.c
+/.vscode
+./a.out

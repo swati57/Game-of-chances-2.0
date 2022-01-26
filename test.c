@@ -1,39 +1,64 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include<time.h>
 
-void generateId(int *usedId) {
-    int id = 0, i = 0, j, found;
-    srand(time(0));
+int fetchQues(int id) {
+    char buffer[200] = "", line_text[200] = "", ansStr[3] = "";
+    int lineCount = 1;
 
-    while(i < 5) {
-        id = (rand() % 7) + 1;  //generates a random number in the range 1 - 30
-        found = 0;              //Assumes id does not match with any previous id
-        
-        //To check if the id is already generated previously
-        for(j = 0 ; j < i ; j++){
-            //if id already generated before
-            if(id == usedId[j]) {
-                found = 1;
+    FILE *fptr;
+    fptr = fopen("Questions.txt", "r");     //Open txt file in r mode
+
+    if(fptr == NULL){
+        //error
+        printf("Questions.txt file failed to open\n");
+    }
+    else {
+        //File acessed
+        while(fgets(buffer, sizeof(buffer), fptr) != NULL) {
+            //ques id matched with line number
+            if(id == lineCount) {
+                //storing the string in line_text from buffer
+                fscanf(fptr, "%[^\n]", line_text);
+                fclose(fptr);       //file closed
                 break;
             }
-        }
-
-        //a new id is found
-        if(!found) {
-            usedId[i] = id;
-            i++;
+            lineCount++;       //increment to next line number
         }
     }
-    return;
+
+    //To print question
+    int i = 4, j = 0;
+    do {
+        printf("%c", line_text[i]);
+    } while(line_text[i++] != '?');
+    
+    //to return the answer value
+    j = 0;
+    while(line_text[i]) {
+        ansStr[j++] = line_text[i++];
+    }
+    return atoi(ansStr);
 }
 
-void main(){
-    
-    int usedId[5] = {0};
-    generateId(usedId);
-    for(int i = 0 ; i<5 ; i++){
-        printf("%d ", usedId[i] );
-    }
-    return;
+void main() {
+    printf("\n1... %d\n", fetchQues(1));
+    printf("\n2... %d\n", fetchQues(2));
+    printf("\n3... %d\n", fetchQues(3));
+    printf("\n4... %d\n", fetchQues(4));
+    printf("\n5... %d\n", fetchQues(5));
+    printf("\n6... %d\n", fetchQues(6));
+    printf("\n7... %d\n", fetchQues(7));
+    printf("\n8... %d\n", fetchQues(8));
+    printf("\n9... %d\n", fetchQues(9));
+    printf("\n10.. %d\n", fetchQues(10));
+    printf("\n11... %d\n", fetchQues(11));
+    printf("\n12... %d\n", fetchQues(12));
+    printf("\n13... %d\n", fetchQues(13));
+    printf("\n14... %d\n", fetchQues(14));
+    printf("\n15... %d\n", fetchQues(15));
+    printf("\n16... %d\n", fetchQues(16));
+    printf("\n17... %d\n", fetchQues(17));
+    printf("\n18... %d\n", fetchQues(18));
+    printf("\n19... %d\n", fetchQues(19));
+    printf("\n20... %d\n", fetchQues(20));
 }

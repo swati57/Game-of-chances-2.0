@@ -1,5 +1,7 @@
+//Done
+
 #include<stdio.h>
-#include "inputDet.h"
+#include"inputDet.h"
 #include<string.h>
 
 void inputDet(Player *P, int pcount) {
