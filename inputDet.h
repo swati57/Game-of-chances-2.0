@@ -9,7 +9,6 @@ typedef struct Player {
 	int eStatus;          //0 - Not eliminated,  1 - Eliminated
 	double netScore;
 } Player;
-
 void inputDet(Player*, int);
 
 #endif
