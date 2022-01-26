@@ -85,7 +85,7 @@ void game(Player *players, int pcount) {
         int elcount = evaluate(players, playerGuess, round, ans, pcount, eliminatedIds);
         //If more than one player is out of range in this round 
         //then the player with lesser score will be eliminated
-        printf("eleminated id :  %d-%d-%d",eliminatedIds[0],eliminatedIds[1],eliminatedIds[2]);
+        if(elcount==1)count++;
         if(elcount > 1) {
             count+= eliminateOne(players, eliminatedIds, elcount); 
         }
