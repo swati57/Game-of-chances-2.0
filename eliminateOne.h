@@ -3,6 +3,6 @@
 
 #include"inputDet.h"
 
-void eliminateOne(Player*, int*, int);
+int eliminateOne(Player*, int*, int);
 
 #endif
