@@ -14,8 +14,7 @@ int main() {
         printf("\t\t3 --- Exit\n\n");
 
         printf("Enter your choice : ");
-        //call the function and input only valid integer valueq
-        menu_choice=input_valid();
+        scanf("%d", &menu_choice);
 
         switch (menu_choice) {
             case 1:
@@ -25,8 +24,7 @@ int main() {
                     
                     do{
                         printf("\nHow many people are playing? : ");
-                        //call the function and input only valid integer value
-                        player_count=input_valid();
+                        scanf("%d", &player_count);
                         if(player_count<2){
                             printf("\nGet some more people to play this game :/ \n");
                             printf("Done calling friends? Let's do this again! \n");
