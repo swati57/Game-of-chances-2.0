@@ -34,7 +34,7 @@ void generateId(int *quesIds) {
 
 
 void game(Player *players, int pcount) {
-    int round  = 1,count=0;
+    int round  = 1, count=0;//Count is the total number of player that's been eleminated so far
     int quesIds[5] = {0};
     int playerGuess[pcount];
     char pStatus[11];
@@ -43,16 +43,16 @@ void game(Player *players, int pcount) {
     generateId(quesIds);
 
     while(round <= 5) {
-         if(count==pcount)break;
-        printf("\n----ROUND %d----", round);
+         if(count==pcount)break; //Check before round if everyone has been eleminated
+        printf("\nHere is your question for ROUND %d \n", round);
 
-        printf("\n~ *Question* ~\n");
+        // printf("\n~ *Question* ~\n");
         //Displays Question and returns answer to that question
         int ans = fetchQues(quesIds[round-1]);
         
         float guess_num;
         //To store player guessed in each round
-        printf("\nEnter your guess... range is 0 to 100\n");
+        printf("\n\nWarning! Enter your guess within 0 to 100\n\n");
         for(int p = 0 ; p < pcount ; p++) {
             if(players[p].eStatus == 0) {   
                 //Input player guess
@@ -70,7 +70,7 @@ void game(Player *players, int pcount) {
                     playerGuess[p]=guess_num;
                     //to check whether guess is between 0 to 100
                     if(playerGuess[p] < 0 || playerGuess[p] > 100 ) {
-                        printf("\nError!! Guess is out of range ... try again\n ");
+                        printf("\nError!! Guess is out of range ... try again\n");
                         --p;
                     }
                 }
@@ -87,16 +87,16 @@ void game(Player *players, int pcount) {
         //then the player with lesser score will be eliminated
         if(elcount==1)count++;
         if(elcount > 1) {
-            count+= eliminateOne(players, eliminatedIds, elcount); 
+            count+= eliminateOne(players, eliminatedIds, elcount, minScore); 
         }
         
-        printf("\nThe correct answer is : %d%%\n", ans);
+        printf("The correct answer is : %d%%\n", ans);
 
         sortCurrent(players, pcount); //to sort current ranking
 
 
         //To display player details after each round
-        printf("\n\t---Player details---\n");
+        printf("\n\t\t\t---CURRENT TALLY---\n");
         printf("PLAYER\t\t\tELIMINATION STATUS\t\t\tNET SCORE\n");
         for(int t = 0 ; t < pcount ; t++) {
             if(players[t].eStatus == 1)

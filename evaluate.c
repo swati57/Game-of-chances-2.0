@@ -29,7 +29,7 @@ void selectRange(int round, int ans, int *limits) {
     //index 0 stores lowerlimit, index 1 - upperlimit
     limits[0] = ((ans - range) <= 0)? 0 : (ans - range);
     limits[1] = ((ans + range) >= 100)? 100 : (ans + range);
-    printf("Range was :  %d-%d\n",limits[0],limits[1]);
+    printf("\nAllowed Range for this question is from %d to %d\n",limits[0],limits[1]);
     return;
 }
 
@@ -43,8 +43,8 @@ int evaluate(
 
     int elcount = 0;
     double score;
-    int limits[2]; 
-    
+    int limits[2];
+    minScore=10000;
     selectRange(round, ans, limits);
 
     //evaluating score and updating estatus for each player in this round
@@ -61,6 +61,10 @@ int evaluate(
             score = 100 - (0.7 * abs(ans - playerGuess[i]));
             //added score to net score of the player
             players[i].netScore += score;
+            if(players[i].netScore < minScore){
+                minScore = players[i].netScore;
+            }
+            //printf("%f",minScore); Just to check if minScore is varying
         }
 
     }
