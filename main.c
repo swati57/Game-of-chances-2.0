@@ -22,10 +22,14 @@ int main() {
                     //Game Entry 
                     printf("\nStarting the game... please input some details...\n");
                     
-                    printf("\nHow many people are playing this game? : ");
-                    
-                    scanf("%d", &player_count);
-                    printf("%d people are playing. How may we call you?", player_count);
+                    do{
+                        printf("\nHow many people are playing this game? : ");
+                        scanf("%d", &player_count);
+                        if(player_count<2){
+                            printf("\nGet some more people to play this game :/ \n");
+                            player_count = 0;
+                        }else{printf("%d people are playing. How may we call you?", player_count); continue;}   
+                    }while(player_count<2);
 
                     //Declaration of an array of struct of type Player with `player_count` number of players
                     Player players[player_count];
