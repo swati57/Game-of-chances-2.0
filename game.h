@@ -9,7 +9,7 @@
 #include"LeaderBoard.h"
 
 void generateId(int*);
-
+int input_valid();
 void game(Player*, int);
 
 #endif
