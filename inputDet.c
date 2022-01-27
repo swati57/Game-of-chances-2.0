@@ -24,6 +24,5 @@ void inputDet(Player *P, int pcount) {
         P[i].eStatus = 0;           
         P[i].netScore = 0.0;    
     }
-    printf("\nThanks for joining!\n");
     return;
 }
