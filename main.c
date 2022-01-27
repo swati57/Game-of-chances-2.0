@@ -13,23 +13,26 @@ int main() {
         printf("\t\t2 --- Leaderboard\n");
         printf("\t\t3 --- Exit\n\n");
 
-        printf("Enter your choice as per the menu:\n");
+        printf("Enter your choice : ");
         scanf("%d", &menu_choice);
 
         switch (menu_choice) {
             case 1:
                 {
                     //Game Entry 
-                    printf("\nGame Starts\n");
+                    printf("\nStarting the game... please input some details...\n");
                     
-                    printf("\nEnter the number of players: ");
+                    printf("\nHow many people are playing this game? : ");
+                    
                     scanf("%d", &player_count);
+                    printf("%d people are playing. How may we call you?", player_count);
 
                     //Declaration of an array of struct of type Player with `player_count` number of players
                     Player players[player_count];
 
                     //Calling inputDet() function to input data of players
                     inputDet(players, player_count);
+                    printf("Game is about to begin, get ready!!\n");
 
                     //Calling function game.c
                     game(players, player_count);
