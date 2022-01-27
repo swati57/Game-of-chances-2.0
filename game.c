@@ -6,7 +6,6 @@
 #include"LeaderBoard.h"
 
 #define NOQ 20  //No. of questions available
-int count=0;
 void generateId(int *quesIds) {
     int id = 0, i = 0, j, found;
     srand(time(0));     //uses current time as seed for random generator
@@ -35,7 +34,7 @@ void generateId(int *quesIds) {
 
 
 void game(Player *players, int pcount) {
-    int round  = 1;
+    int round  = 1,count=0;
     int quesIds[5] = {0};
     int playerGuess[pcount];
     char pStatus[11];
@@ -44,7 +43,7 @@ void game(Player *players, int pcount) {
     generateId(quesIds);
 
     while(round <= 5) {
-         if(count==pcount-1)break;
+         if(count==pcount)break;
         printf("\n----ROUND %d----", round);
 
         printf("\n~ *Question* ~\n");
@@ -86,15 +85,11 @@ void game(Player *players, int pcount) {
         int elcount = evaluate(players, playerGuess, round, ans, pcount, eliminatedIds);
         //If more than one player is out of range in this round 
         //then the player with lesser score will be eliminated
-        printf("eleminated id :  %d-%d-%d",eliminatedIds[0],eliminatedIds[1],eliminatedIds[2]);
+        if(elcount==1)count++;
         if(elcount > 1) {
-            if(eliminateOne(players, eliminatedIds, elcount))count++;; 
+            count+= eliminateOne(players, eliminatedIds, elcount); 
         }
-          
-          printf("\ncount:  %d",count);
-       
-
-
+        
         printf("\nThe correct answer is : %d%%\n", ans);
 
         sortCurrent(players, pcount); //to sort current ranking
