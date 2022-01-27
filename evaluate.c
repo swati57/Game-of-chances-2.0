@@ -29,7 +29,7 @@ void selectRange(int round, int ans, int *limits) {
     //index 0 stores lowerlimit, index 1 - upperlimit
     limits[0] = ((ans - range) <= 0)? 0 : (ans - range);
     limits[1] = ((ans + range) >= 100)? 100 : (ans + range);
-    printf("Correct Range :  %d-%d\n",limits[0],limits[1]);
+    printf("\nAllowed Range for this question is from %d to %d\n",limits[0],limits[1]);
     return;
 }
 

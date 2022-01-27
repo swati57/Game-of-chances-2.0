@@ -90,13 +90,13 @@ void game(Player *players, int pcount) {
             count+= eliminateOne(players, eliminatedIds, elcount, minScore); 
         }
         
-        printf("\nThe correct answer is : %d%%\n", ans);
+        printf("The correct answer is : %d%%\n", ans);
 
         sortCurrent(players, pcount); //to sort current ranking
 
 
         //To display player details after each round
-        printf("\n\t---CURRENT TALLY---\n");
+        printf("\n\t\t\t---CURRENT TALLY---\n");
         printf("PLAYER\t\t\tELIMINATION STATUS\t\t\tNET SCORE\n");
         for(int t = 0 ; t < pcount ; t++) {
             if(players[t].eStatus == 1)
